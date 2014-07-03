@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>TEST</title>
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script defer src="dependency.min.js"></script>
+
+  <script>
+    var demo = {}
+
+    $(document).ready(function() {
+      dependency.load("js/dep1.js");
+      dependency.load("js/dep2.js");
+      dependency.ready(function() {
+        demo.func1();
+        demo.func2();
+      });
+    });
+  </script>
+</head>
+<body>
+  This is awesome !<br />
+</body>
+</html>
