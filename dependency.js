@@ -1,7 +1,7 @@
 var dependency = {
 
   _ary:new Array(),
-  _hdl:new Array(),
+  _hdl:null,
   debug:false,
 
   load:function(f) {
@@ -15,12 +15,11 @@ var dependency = {
   },
 
   ready:function(cb) {
-    var r = Math.floor((Math.random() * 10000) + 1);
-    dependency._hdl[r] = setInterval( function() {
+    dependency._hdl = setInterval( function() {
       var isReady = true;
       for (var i=0; i<dependency._ary.length && isReady; i++) isReady = dependency._ary[i];
       if (isReady) {
-        clearInterval(dependency._hdl[r]); dependency._hdl[r] = null;
+        clearInterval(dependency._hdl); dependency._hdl = null;
         if (dependency.debug) console.log("All ready !" );
         cb.call();
       }
